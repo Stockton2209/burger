@@ -16,6 +16,12 @@ router.get("/", function(req, res) {
     });
 });
 
+//post the data of the new burger
+    //router.post("/api/burgers")
+
+//updating burgers from not-eaten to eaten
+    //router.put("/api/burgers/:id")
+
 
 
 

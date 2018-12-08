@@ -11,6 +11,12 @@ var burger = {
             cb(res);
         });
     }
+
+    //a function to create a new burger
+        //insertOne
+
+    //a function to update burgers to eaten status
+        //updateOne
 };
 
 module.exports = burger;

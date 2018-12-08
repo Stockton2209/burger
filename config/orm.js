@@ -1,5 +1,5 @@
 //import the mysql connection.
-const connection = require("../config/connection.js");
+const connection = require("./connection.js");
 
 //convert object key/value pairs to SQL syntax
 function objToSql(ob) {
@@ -32,11 +32,26 @@ var orm = {
             cb(result);
         });
     },
-
-
-    //insertOne() function to create a burger
+    //insertOne() function to create(add) a burger
+        //"INSERT INTO tablename (columnName) VALUES (valueName)"
    
     //updateOne()  function to shown "eaten" burgers
+    // update: function(table, objColVals, condition, cb) {
+    //     var queryString = "UPDATE " + table;
+    
+    //     queryString += " SET ";
+    //     queryString += objToSql(objColVals);
+    //     queryString += " WHERE ";
+    //     queryString += condition;
+    
+    //     console.log(queryString);
+    //     connection.query(queryString, function(err, result) {
+    //       if (err) {
+    //         throw err;
+    //       }
+    
+    //       cb(result);
+    //     });
 
 }
 
