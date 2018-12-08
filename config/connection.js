@@ -2,13 +2,20 @@
 //connect node to MySQL
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "Coders11",
-    database: "burgers_db"
-});
+if (process.env.JAWSDB_URL){
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+// want to export the function so it can be used elsewhere
+
+//connect mysql to by database
+    connection = mysql.createConnection({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "Coders11",
+        database: "burgers_db"
+    });
+};
 
 connection.connect(function(err) {
     if (err){

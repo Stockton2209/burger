@@ -1,19 +1,42 @@
 //import the mysql connection.
 const connection = require("../config/connection.js");
 
-//create the object for the sql statement functions
+//convert object key/value pairs to SQL syntax
+function objToSql(ob) {
+    var arr = [];
+  
+    // loop through the keys and push the key/value as a string int arr
+    for (var key in ob) {
+      var value = ob[key];
+      // check to skip hidden properties
+      if (Object.hasOwnProperty.call(ob, key)) {
+        // add quotations if it's a string with spaces 
+        if (typeof value === "string" && value.indexOf(" ") >= 0) {
+          value = "'" + value + "'";
+        }
+        arr.push(key + "=" + value);
+      }
+    }
+  
+    // translate array of strings to a single comma-separated string
+    return arr.toString();
+}
+
+//create the orm object for the sql statement functions
 var orm = {
-    //selectAll() function
-    selectAll: function(tableInput) {
-        var queryString = "SELECT * FROM ??;";
-        connection.query(queryString, [tableInput], function(err, result) {
-            if(err) throw err;
-            console.log(result);
+    //function to select all burgers
+    selectAll: function(tableName, cb){
+        var queryString = "SELECT * FROM ??";
+        connection.query(queryString, [tableName], function (err, result) {
+            if (err) throw err;
+            cb(result);
         });
     },
+
+
     //insertOne() function to create a burger
-    insertOne: function
-    //updateOne() 
+   
+    //updateOne()  function to shown "eaten" burgers
 
 }
 

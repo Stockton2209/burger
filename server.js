@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 
 var PORT = process.env.PORT || 3000
-//insert jawsDB connection later for heroku
 
 //include the static content from the "public" folder
 app.use(express.static("public"));
@@ -18,7 +17,9 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+var routes = require("./controllers/burgers_controllers.js");
 
+app.use(routes);
 
 //Listener
 app.listen(PORT, function() {
